@@ -3,6 +3,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import express from 'express';
 import morgan from 'morgan';
 import stream from 'stream';
+import path from 'path';
 import url from 'url';
 
 const token = process.env['VECKOBOT_TOKEN'];
@@ -40,7 +41,7 @@ app.use(morgan('common'));
 
 app.get('/current-week.jpg', (req, res) => {
     webshot('vecka.nu', 'out.jpg', (err) => {
-        res.sendFile('out.jpg');
+        res.sendFile(path.join(process.cwd(), 'out.jpg'));
     });
 });
 
