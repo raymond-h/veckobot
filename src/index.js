@@ -1,6 +1,7 @@
 import webshot from 'webshot';
 import TelegramBot from 'node-telegram-bot-api';
 import express from 'express';
+import morgan from 'morgan';
 import stream from 'stream';
 import url from 'url';
 
@@ -32,6 +33,8 @@ bot.on('inline_query', (req) => {
 });
 
 const app = express();
+
+app.use(morgan('common'));
 
 app.get('/current-week.png', (req, res) => {
     webshot('vecka.nu').pipe(res);
