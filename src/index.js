@@ -20,7 +20,7 @@ bot.onText(/what week is it/i, (msg) => {
 bot.on('inline_query', (req) => {
     console.log(req);
 
-    const photoUrl = url.resolve(process.env['VECKOBOT_BASE_URL'], 'current-week.png');
+    const photoUrl = url.resolve(process.env['VECKOBOT_BASE_URL'], 'current-week.jpg');
 
     bot.answerInlineQuery(req.id, [
         {
@@ -36,8 +36,8 @@ const app = express();
 
 app.use(morgan('common'));
 
-app.get('/current-week.png', (req, res) => {
-    webshot('vecka.nu').pipe(res);
+app.get('/current-week.jpg', (req, res) => {
+    webshot('vecka.nu', { streamType: 'jpg' }).pipe(res);
 });
 
 app.listen(8000);
