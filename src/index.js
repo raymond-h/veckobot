@@ -2,8 +2,9 @@ import webshot from 'webshot';
 import TelegramBot from 'node-telegram-bot-api';
 import express from 'express';
 import stream from 'stream';
+import url from 'url';
 
-const token = '201853302:AAFu5EcPgsba_U2b_QEd0ugZc_kXa5hDXyw';
+const token = process.env['VECKOBOT_TOKEN'];
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -18,12 +19,14 @@ bot.onText(/what week is it/i, (msg) => {
 bot.on('inline_query', (req) => {
     console.log(req);
 
+    const photoUrl = url.resolve(process.env['VECKOBOT_BASE_URL'], 'current-week.png');
+
     bot.answerInlineQuery(req.id, [
         {
             type: 'photo',
             id: 'only',
-            photo_url: 'http://i.imgur.com/KPWGO27.png',
-            thumb_url: 'http://i.imgur.com/KPWGO27.png'
+            photo_url: photoUrl,
+            thumb_url: photoUrl
         }
     ]);
 });
