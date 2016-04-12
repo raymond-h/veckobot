@@ -22,6 +22,8 @@ bot.on('inline_query', (req) => {
 
     const photoUrl = url.resolve(process.env['VECKOBOT_BASE_URL'], 'current-week.jpg');
 
+    console.log('Photo URL: ', photoUrl);
+
     bot.answerInlineQuery(req.id, [
         {
             type: 'photo',
