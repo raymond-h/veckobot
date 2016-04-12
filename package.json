@@ -29,5 +29,9 @@
   "dependencies": {
     "node-telegram-bot-api": "^0.21.1",
     "webshot": "^0.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymond-h/veckobot"
   }
 }
