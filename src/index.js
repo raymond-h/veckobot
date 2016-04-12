@@ -21,7 +21,10 @@ bot.onText(/what week is it/i, (msg) => {
 bot.on('inline_query', (req) => {
     console.log(req);
 
-    const photoUrl = url.resolve(process.env['VECKOBOT_BASE_URL'], 'current-week.jpg');
+    const photoUrl = url.resolve(
+        process.env['VECKOBOT_BASE_URL'],
+        'current-week.jpg?id=' + req.id // to prevent Telegram from caching I guess
+    );
 
     console.log('Photo URL: ', photoUrl);
 
