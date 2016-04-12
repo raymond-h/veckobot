@@ -15,6 +15,19 @@ bot.onText(/what week is it/i, (msg) => {
     });
 });
 
+bot.on('inline_query', (req) => {
+    console.log(req);
+
+    bot.answerInlineQuery(req.id, [
+        {
+            type: 'photo',
+            id: 'only',
+            photo_url: 'http://i.imgur.com/KPWGO27.png',
+            thumb_url: 'http://i.imgur.com/KPWGO27.png'
+        }
+    ]);
+});
+
 const app = express();
 
 app.get('/current-week.png', (req, res) => {
