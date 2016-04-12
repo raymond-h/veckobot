@@ -25,5 +25,9 @@
     "eslint": "^2.7.0",
     "mocha": "^2.4.5",
     "onchange": "^2.3.0"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.21.1",
+    "webshot": "^0.18.0"
   }
 }
