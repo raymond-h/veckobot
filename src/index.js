@@ -37,7 +37,9 @@ const app = express();
 app.use(morgan('common'));
 
 app.get('/current-week.jpg', (req, res) => {
-    webshot('vecka.nu', { streamType: 'jpg' }).pipe(res);
+    webshot('vecka.nu', 'out.jpg', (err) => {
+        res.sendFile('out.jpg');
+    });
 });
 
 app.listen(8000);
